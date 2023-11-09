@@ -25,7 +25,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
           },
@@ -51,22 +52,35 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
         },
         "serve": {
+        
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "ang-blog-dashboard:build:production"
+             
             },
             "development": {
               "browserTarget": "ang-blog-dashboard:build:development"
+              
+            },
+            "options":{
+              "disableHostCheck": true
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+         
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
@@ -94,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "2343ee5a-cfc7-4645-b420-ae8438458c4f"
   }
 }
