@@ -6,16 +6,25 @@
 
                 <form class="form-inline text-center" #categoryForm='ngForm' (ngSubmit)="onSubmit(categoryForm)">
                         <div class="col-md-10">
-                                <!-- <input type="text" class="form-control shadow-effect" placeholder="Add New Categories"> -->
-                                <input type="text" name="category" class="shadow-effect" placeholder="Enter your name here" ngModel='category'> 
+                              
+                                <input type="text"
+                                  name="category"
+                                  class="shadow-effect" 
+                                  placeholder="Enter your name here" 
+                                  #newCategory = 'ngModel'
+                                  ngModel
+                                  required
+                                      
+                                  >
+                                
+                                  
+                                  <!-- [ ngClass] ="{ 'is-invalid' : newCategory.touched && newCategory.invalid }" -->
+                                  <div class="alert alert-danger" *ngIf= "newCategory.touched && newCategory.invalid">
+                                        Category field is Required
+                                  </div>
                         </div>
-<!--                        
                         <div class="col-md-2">
-                            <button class="btn btn-block btn-info mb-2  btn-theme">Add Category</button>
-                        </div> -->
-
-                        <div class="col-md-2">
-                            <button class="btn btn-block btn-info mb-2 btn-theme">Add Category</button>
+                            <button class="btn btn-block btn-info mb-2 btn-theme" [disabled]="categoryForm.invalid">Add Category</button>
                         </div>
                 </form>
         </div>

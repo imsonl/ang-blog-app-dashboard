@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { catchError } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,7 +10,9 @@ import { catchError } from 'rxjs';
 })
 export class CategoriesComponent implements OnInit{
 
-  constructor(){
+  // constructor(private afs: AngularFirestore ){
+  // }
+  constructor( private categoryService: CategoriesService){
 
   }
 
@@ -17,11 +20,36 @@ export class CategoriesComponent implements OnInit{
    
   }
   onSubmit(formData:NgForm){
-      // console.log(formData.value);
+     
       let categoryData = {
-        category: formData.value.category
+        category: formData.value.category,
       }
-      console.log(categoryData);
-  }
+
+      // this.categoryService.saveData(categoryData);
+
+      // let SubcategoryData = {
+      //   subcategory: 'subCategory',
+       
+      // }
+      //this query is saving data into Angular Firestore
+      // this.afs.collection('Categories').add(categoryData).then(docref => {
+      //   console.log(docref)
+
+      //   this.afs.doc('categories/${docRef.id}').collection('subCategories').add(SubcategoryData)
+      //   this.afs.collection('categories').doc(docref.id).collection('subCategories').add(SubcategoryData).then(docref1 =>{
+      //     console.log(docref1)
+
+      //     this.afs.doc('categories/${docref.id}/subCategories/${docref1.id}').collection('Subsubcategories').add(SubcategoryData).then(docref2=>{
+      //       console.log('Second Level is working successfully');
+      //     });
+
+      //     this.afs.collection('categories').doc(docref.id).collection('subCategories').doc(docref1.id).collection('subsubcategories').add(SubcategoryData).then(docref2=>{
+      //       console.log('Second Level')
+      //     })
+      //   })
+      // }).catch(err => 
+      //   { console.log(err)})
+       }
+        
 
 }

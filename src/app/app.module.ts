@@ -1,23 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+//import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module'; 
 
+ import { FormsModule } from '@angular/forms';
  import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
  import { AngularFireModule } from '@angular/fire/compat';
-  //  import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
-    import { environment } from 'src/environments/environment.prod.development';
+ import { AngularFirestore } from '@angular/fire/compat/firestore';
 
-// '@angular/fire/compat/firestore';
+import { environment } from 'src/environments/environment.prod.development';
 
-
-
-// import { AngularFireModule } from '@angular/fire/compat'
-// import { AngularFirestoreModule } from '@angular/fire/firestore'
-// import { AngularFireStorageModule } from '@angular/fire/storage'
-// import { AngularFireAuthModule } from '@angular/fire/auth'
-
-
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
@@ -37,10 +29,12 @@ import { CategoriesComponent } from './categories/categories.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    
-  //  AngularFireModule.initializeApp(environment.firebaeconfig),
-  //    AngularFirestoreModule,
-    FormsModule,
+   AngularFireModule.initializeApp(environment.firebaeconfig),
+  
+  AngularFirestoreModule,
+ // AngularFirestore,
+   FormsModule,
+  
     //    AngularFireModule.initializeApp(environment.firebaeconfig),
 
   ],
