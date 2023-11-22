@@ -16,6 +16,8 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { SubscriptionFormComponent } from './subscription-form/subscription-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { ToastrModule } from 'ngx-toastr';
+import{ BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -29,13 +31,12 @@ import { CategoriesComponent } from './categories/categories.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-   AngularFireModule.initializeApp(environment.firebaeconfig),
-  
-  AngularFirestoreModule,
- // AngularFirestore,
-   FormsModule,
-  
-    //    AngularFireModule.initializeApp(environment.firebaeconfig),
+    AngularFireModule.initializeApp(environment.firebaeconfig),
+    AngularFirestoreModule,
+    FormsModule,
+    ToastrModule.forRoot(), 
+    BrowserAnimationsModule
+    //    AngularFireModule.initialiszeApp(environment.firebaeconfig),
 
   ],
   providers: [],
