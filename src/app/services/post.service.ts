@@ -1,17 +1,23 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 import {AngularFirestore}from '@angular/fire/compat/firestore';
 import {ToastrService} from 'ngx-toastr';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { map } from 'rxjs/operators';
 
 
-@Injectable( {
-    providedIn: 'root'
+@Injectable({
+  providedIn: 'root'
+})
+export class PostService {
+
+
+  constructor(private afs: AngularFirestore, private toastrservice: ToastrService, private storage : AngularFireStorage) {}
+
+  UploadImage(selectedimage:any){
+    const filepath = 'postIMG/${Datetime.now()}';
+
   }
-
-) export class CategoriesService {
-
-  constructor(private afs: AngularFirestore, private toastrservice: ToastrService) {}
 
   saveData(data: any) {
 
@@ -45,17 +51,12 @@ import { map } from 'rxjs/operators';
       {
         this.toastrservice.success('Data Updated Successfully!');
       })
-    // this.afs.doc('Categories/${Id}').update(EditData).then(docRef =>{
-    //     this.toastrservice.success('Data Updated Successfully!');
-    // })
+   
   }
   DeleteData (Id:any){
     this.afs.collection('Categories').doc(Id).delete().then(docRef => {
       this.toastrservice.success("Data deleted Successfully!");
     })
-    // this.afs.doc('Categories/#{Id}').delete().then(docRef => {
-    //   this.toastrservice.success("Data deleted Successfully!");
-    // })
-
-  } 
+    
+  }
 }

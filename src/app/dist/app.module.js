@@ -14,6 +14,7 @@ var app_routing_module_1 = require("./app-routing.module");
 var forms_1 = require("@angular/forms");
 var firestore_1 = require("@angular/fire/compat/firestore");
 var compat_1 = require("@angular/fire/compat");
+var storage_1 = require("@angular/fire/compat/storage");
 var environment_prod_development_1 = require("src/environments/environment.prod.development");
 var app_component_1 = require("./app.component");
 var header_component_1 = require("./layouts/header/header.component");
@@ -21,6 +22,8 @@ var footer_component_1 = require("./layouts/footer/footer.component");
 var subscription_form_component_1 = require("./subscription-form/subscription-form.component");
 var dashboard_component_1 = require("./dashboard/dashboard.component");
 var categories_component_1 = require("./categories/categories.component");
+var all_post_component_1 = require("./posts/all-post/all-post.component");
+var new_post_component_1 = require("./posts/new-post/new-post.component");
 var ngx_toastr_1 = require("ngx-toastr");
 var animations_1 = require("@angular/platform-browser/animations");
 var AppModule = /** @class */ (function () {
@@ -34,7 +37,9 @@ var AppModule = /** @class */ (function () {
                 footer_component_1.FooterComponent,
                 subscription_form_component_1.SubscriptionFormComponent,
                 dashboard_component_1.DashboardComponent,
-                categories_component_1.CategoriesComponent
+                categories_component_1.CategoriesComponent,
+                all_post_component_1.AllPostComponent,
+                new_post_component_1.NewPostComponent
             ],
             imports: [
                 platform_browser_1.BrowserModule,
@@ -43,7 +48,8 @@ var AppModule = /** @class */ (function () {
                 firestore_1.AngularFirestoreModule,
                 forms_1.FormsModule,
                 ngx_toastr_1.ToastrModule.forRoot(),
-                animations_1.BrowserAnimationsModule
+                animations_1.BrowserAnimationsModule,
+                storage_1.AngularFireStorageModule
                 //    AngularFireModule.initialiszeApp(environment.firebaeconfig),
             ],
             providers: [],

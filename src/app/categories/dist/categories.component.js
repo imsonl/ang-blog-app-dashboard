@@ -11,14 +11,29 @@ var core_1 = require("@angular/core");
 var CategoriesComponent = /** @class */ (function () {
     function CategoriesComponent(categoryService) {
         this.categoryService = categoryService;
+        this.formStatus = 'Add';
+        this.categoryArray = [];
     }
     CategoriesComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.categoryService.loadData().subscribe(function (val) {
+            console.log(val);
+            _this.categoryArray = val;
+        });
     };
     CategoriesComponent.prototype.onSubmit = function (formData) {
         var categoryData = {
             category: formData.value.category
         };
-        this.categoryService.saveData(categoryData);
+        if (this.formStatus == 'Add') {
+            this.categoryService.saveData(categoryData);
+            formData.reset();
+        }
+        else if (this.formStatus == 'Edit') {
+            this.categoryService.UpdateData(this.CategoryId, categoryData);
+            formData.reset();
+            this.formStatus = 'Add';
+        }
         // let SubcategoryData = {
         //   subcategory: 'subCategory',
         // }
@@ -37,6 +52,15 @@ var CategoriesComponent = /** @class */ (function () {
         //   })
         // }).catch(err => 
         //   { console.log(err)})
+    };
+    CategoriesComponent.prototype.OnEdit = function (Category, id) {
+        console.log(Category);
+        this.formCategory = Category;
+        this.formStatus = 'Edit';
+        this.CategoryId = id;
+    };
+    CategoriesComponent.prototype.OnDelete = function (id) {
+        this.categoryService.DeleteData(id);
     };
     CategoriesComponent = __decorate([
         core_1.Component({
