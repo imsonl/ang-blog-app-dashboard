@@ -43,8 +43,19 @@ export class CategoriesComponent implements OnInit{
         this.formStatus = 'Add';
       }  
 
+       }
+        OnEdit(Category : any ,id :any){
+          console.log(Category);
+          this.formCategory =  Category;
+          this.formStatus= 'Edit';
+          this.CategoryId = id;
 
-      
+        }
+        OnDelete(id:any){
+            this.categoryService.DeleteData(id);
+        }
+
+}
 
       // let SubcategoryData = {
       //   subcategory: 'subCategory',
@@ -68,16 +79,3 @@ export class CategoriesComponent implements OnInit{
       //   })
       // }).catch(err => 
       //   { console.log(err)})
-       }
-        OnEdit(Category : any ,id :any){
-          console.log(Category);
-          this.formCategory =  Category;
-          this.formStatus= 'Edit';
-          this.CategoryId = id;
-
-        }
-        OnDelete(id:any){
-            this.categoryService.DeleteData(id);
-        }
-
-}

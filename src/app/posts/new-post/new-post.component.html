@@ -2,49 +2,80 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <h3 class="text-theme-primary">
-        Ad New Post
+        Add New Post
       </h3>
       <p class="mb-5">You can Add Your New Post Here</p>
     </div>
   </div>
-  <form>
+  <form [formGroup]="postForm">
     <div class="row">
       <div class="col-md-7">
         <div class="card shadow-effect">
           <div class="card-body">
             <div class="form-group">
               <label> Title </label>
-              <input type="text" class="form-control" (keyup)="onTitleChanged($event)">
+              <input type="text" class="form-control" (keyup)="onTitleChanged($event)" formControlName="title">
+              <div *ngIf = 'fc.title.errors?.required'>
+                <div class="alert alert-danger " *ngIf= "fc.title.touched && fc.title.invalid">Title is required</div>
+              </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group"> 
               <label> Permalink </label>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" [(ngModel)] = "permalink"  name='permalink' disabledformControlName="permalink">
+              <!-- <div *ngIf = 'fc.permalink.errors?.required'>
+                <div class="alert alert-danger " *ngIf= "fc.permalink.touched && fc.permalink.invalid">Permalink is required</div>
+              </div> -->
             </div>
 
             <div class="form-group">
               <label> Except </label>
-              <textarea cols="30" rows="10" class="form-control"></textarea>
+              <textarea cols="30" rows="10" class="form-control" formControlName="excerpt"></textarea>
+              <div *ngIf = 'fc.excerpt.errors?.required'>
+                <div class="alert alert-danger " *ngIf= "fc.excerpt.touched && fc.excerpt.invalid">Excerpt is required</div>
+              </div>
             </div>
 
           </div>
         </div>
       </div>
 
-      <div class="col-md-5 shadow-effect">
+      <!-- <div class="col-md-5 shadow-effect">
         <div class="form-group">
           <label for="">Please Select a Post Category </label>
           <select class="form-control">
             <option value="" disabled> Please select a category</option>
+            <option *ngFor = 'let categoryitem of categories' > {{ categoryitem.data.category }}</option>
+            <option *ngFor=  'let categoryList of categoryList'>{{ categoryList }}</option>
           </select>
         </div>
+      </div> -->
+
+        <div class="col-md-5">
+          <div class="card shadow-effect">
+            <div class="card-body">
+              <div class="form-group">
+                <label for="">Please Select a Post Category </label>
+                <select class="form-control">
+                  <option value=""> Please select a category</option>
+                  <option *ngFor = 'let categoryitem of categories' > {{ categoryitem.data.category }}</option>
+                  <option value=""> Admin</option>
+                  <option value="">Super Admin</option>
+                </select>
+              </div>
+            </div>
+          </div>
+       
 
         <div class="form-group">
             <label for=""> Post Image</label>
-            <input type="file" class="form-control">
-        
+            <img [src]= "imgSrc" class="form-control img-fluid img-preview"formControlName="postImg" >
+            <!-- this will accept only image files. -->
+            <input type="file" class="form-control" accept="image/*" (change)="showPreview($event)"> 
+            <!-- <div *ngIf = 'fc.postImg.errors?.required'>
+              <div class="alert alert-danger " *ngIf= "fc.postImg.touched && fc.postImg.invalid">Post Image is required</div>
+            </div> -->
         </div>
-
       </div>
     </div>
 
@@ -54,9 +85,14 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="" > Content</label>
-                        <textarea cols="30" rows="10" class="form-control"></textarea>
-
-                    </div>
+                        <!-- <textarea cols="30" rows="10" class="form-control"></textarea> -->
+                        <!-- //AngularEditorModule -->
+                         
+                        <angular-editor placeholder = "Add Your Content here"formControlName="content"></angular-editor>
+                        <!-- <div *ngIf = 'fc.content.rrors?.required'>
+                          <div class="alert alert-danger " *ngIf= "fc.content.touched && fc.content.invalid">content is required</div>
+                        </div> -->
+                      </div>
                 </div>
 
             </div>

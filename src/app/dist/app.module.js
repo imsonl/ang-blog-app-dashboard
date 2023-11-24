@@ -24,6 +24,9 @@ var dashboard_component_1 = require("./dashboard/dashboard.component");
 var categories_component_1 = require("./categories/categories.component");
 var all_post_component_1 = require("./posts/all-post/all-post.component");
 var new_post_component_1 = require("./posts/new-post/new-post.component");
+var angular_editor_1 = require("@kolkov/angular-editor");
+var http_1 = require("@angular/common/http");
+var forms_2 = require("@angular/forms");
 var ngx_toastr_1 = require("ngx-toastr");
 var animations_1 = require("@angular/platform-browser/animations");
 var AppModule = /** @class */ (function () {
@@ -49,7 +52,10 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 ngx_toastr_1.ToastrModule.forRoot(),
                 animations_1.BrowserAnimationsModule,
-                storage_1.AngularFireStorageModule
+                storage_1.AngularFireStorageModule,
+                http_1.HttpClientModule,
+                angular_editor_1.AngularEditorModule,
+                forms_2.ReactiveFormsModule
                 //    AngularFireModule.initialiszeApp(environment.firebaeconfig),
             ],
             providers: [],

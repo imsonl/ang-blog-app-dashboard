@@ -20,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AllPostComponent } from './posts/all-post/all-post.component';
 import { NewPostComponent } from './posts/new-post/new-post.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 import { ToastrModule } from 'ngx-toastr';
@@ -44,7 +47,10 @@ import{ BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ToastrModule.forRoot(), 
     BrowserAnimationsModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    HttpClientModule,
+    AngularEditorModule,
+    ReactiveFormsModule
     //    AngularFireModule.initialiszeApp(environment.firebaeconfig),
 
   ],
