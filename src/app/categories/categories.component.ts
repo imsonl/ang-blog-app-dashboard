@@ -11,7 +11,6 @@ import { Category } from '../models/category';
 })
 export class CategoriesComponent implements OnInit{
 
-  //  categoryArray!: Array<object>;
   categoryArray!: any;
   formCategory!:any;
   formStatus:any = 'Add';
@@ -42,40 +41,15 @@ export class CategoriesComponent implements OnInit{
         formData.reset();
         this.formStatus = 'Add';
       }  
-
-       }
+  }
         OnEdit(Category : any ,id :any){
           console.log(Category);
           this.formCategory =  Category;
           this.formStatus= 'Edit';
           this.CategoryId = id;
-
         }
         OnDelete(id:any){
             this.categoryService.DeleteData(id);
         }
 
 }
-
-      // let SubcategoryData = {
-      //   subcategory: 'subCategory',
-       
-      // }
-      //this query is saving data into Angular Firestore
-      // this.afs.collection('Categories').add(categoryData).then(docref => {
-      //   console.log(docref)
-
-      //   this.afs.doc('categories/${docRef.id}').collection('subCategories').add(SubcategoryData)
-      //   this.afs.collection('categories').doc(docref.id).collection('subCategories').add(SubcategoryData).then(docref1 =>{
-      //     console.log(docref1)
-
-      //     this.afs.doc('categories/${docref.id}/subCategories/${docref1.id}').collection('Subsubcategories').add(SubcategoryData).then(docref2=>{
-      //       console.log('Second Level is working successfully');
-      //     });
-
-      //     this.afs.collection('categories').doc(docref.id).collection('subCategories').doc(docref1.id).collection('subsubcategories').add(SubcategoryData).then(docref2=>{
-      //       console.log('Second Level')
-      //     })
-      //   })
-      // }).catch(err => 
-      //   { console.log(err)})
